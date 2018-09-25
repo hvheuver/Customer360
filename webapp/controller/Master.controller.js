@@ -9,6 +9,8 @@ sap.ui.define([
 		
 		onCustomerPress: function(oEvent){
 			var oCustomer = oEvent.getSource().getBindingContext().getObject();
+			this.getView().getModel("customerModel").setData({"customer" : oCustomer});
+			
 			this.getRouter().navTo("Detail", {
 				customerNumber: oCustomer.CustomerNumber
 			});

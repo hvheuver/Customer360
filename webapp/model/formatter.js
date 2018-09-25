@@ -1,4 +1,6 @@
-sap.ui.define([], function () {
+sap.ui.define([
+	"sap/ui/core/format/DateFormat"
+	], function (DateFormat) {
 	"use strict";
 	return {
 
@@ -6,6 +8,9 @@ sap.ui.define([], function () {
 			return "00"+sValue;
 		},
 		
-		
+		formatDate: function(sValue) {
+			var oInstance = DateFormat.getInstance();
+			return oInstance.format(sValue);
+		}
 	};
 });

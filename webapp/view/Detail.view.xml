@@ -3,50 +3,51 @@
 	<App>
 		<pages>
 			<Page title="Title">
-				<ObjectHeader title="{customer>/name}" icon="sap-icon://customer">
-					<attributes>
-						<ObjectAttribute text="{customer>/city}"/>
-						<ObjectAttribute text="{customer>/country}"/>
-						<ObjectAttribute text="{customer>/CustomerNumber}"/>
-					</attributes>
-				</ObjectHeader>
-				<Table items="{orderViewModel>/orders}">
-					<headerToolbar>
-						<Toolbar>
-							<content>
-								<Title text=" {i18n>Detail.Table.Title}" level="H2"/>
-							</content>
-						</Toolbar>
-					</headerToolbar>
-					<columns>
-						<Column>
-							<Text text="{i18n>Detail.Table.Header.SalesOrderNumber}"/>
-						</Column>
-						<Column >
-							<Text text="{i18n>Detail.Table.Header.PurchaseOrderNumber}"/>
-						</Column>
-						<Column>
-							<Text text="{i18n>Detail.Table.Header.DeliveryDate}"/>
-						</Column>
-						<Column>
-							<Text text="{i18n>Detail.Table.Header.Value}"/>
-						</Column>
-					</columns>
-					<items>
-						<ColumnListItem>
-							<cells>
-								<Text text="{orderViewModel>Id}"/>
-								<Text text="{orderViewModel>OrderNumber}"/>
-								<Text text="{orderViewModel>RequestDeliveryDate}"/>
-								<Text text="{orderViewModel>NetValue}"/>
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
-			</content>
-		</Page>
-	</pages>
-</App>
+				<content>
+					<ObjectHeader title="{customerModel>/customer/name}" icon="sap-icon://customer">
+						<attributes>
+							<ObjectAttribute text="{customerModel>/customer/city}"/>
+							<ObjectAttribute text="{customerModel>/customer/country}"/>
+							<ObjectAttribute text="{customerModel>/customer/CustomerNumber}"/>
+						</attributes>
+					</ObjectHeader>
+					<Table items="{orderViewModel>/orders}">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text=" {i18n>Detail.Table.Title}" level="H2"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>Detail.Table.Header.SalesOrderNumber}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>Detail.Table.Header.PurchaseOrderNumber}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>Detail.Table.Header.DeliveryDate}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>Detail.Table.Header.Value}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{orderViewModel>Id}"/>
+									<Text text="{orderViewModel>OrderNumber}"/>
+									<Text text="{path: 'orderViewModel>RequestDeliveryDate', formatter: '.formatter.formatDate'}"/>
+									<Text text="{orderViewModel>NetValue}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
 </mvc:View>
 <!--<Image
 					src="http://i.gzn.jp/img/2018/05/04/mr-bean-physical-comedy/00.jpg"
