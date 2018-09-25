@@ -21,6 +21,22 @@
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml"
 				}
+			},
+			"ZGW_CUST_360_HVH_SRV": {
+				"uri": "/sap/opu/odata/sap/ZGW_CUST_360_HVH_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZGW_CUST_360_HVH_SRV/metadata.xml"
+				}
+			},
+			"ZV_ZVT18_CUSTM_HVH_CDS": {
+				"uri": "/sap/opu/odata/sap/ZV_ZVT18_CUSTM_HVH_CDS/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZV_ZVT18_CUSTM_HVH_CDS/metadata.xml"
+				}
 			}
 		}
 	},
@@ -70,6 +86,22 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {},
 				"preload": false
+			},
+			"": {
+				"uri": "/sap/opu/odata/sap/ZV_ZVT18_CUSTM_HVH_CDS/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZV_ZVT18_CUSTM_HVH_CDS",
+				"preload": true
+			},
+			"customersModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false
 			}
 		},
 		"resources": {
@@ -85,11 +117,25 @@
 				"viewPath": "com.delaware.hvh.trac2018.view",
 				"controlId": "idAppControl"
 			},
-			"routes": [
-			
-			],
+			"routes": [{
+				"name": "Master",
+				"pattern": "",
+				"target": "Master"
+			}],
 			"targets": {
-				
+				"Master": {
+					"viewType": "XML",
+					"viewName": "Master",
+					"routerClass": "sap.f.routing.Router",
+					"async": true,
+					"viewPath": "com.delaware.hvh.trac2018.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "beginColumnPages"
+				},
+				"Detail": {
+					"viewType": "XML",
+					"viewName": "Detail"
+				}
 			}
 		}
 	}
