@@ -3,8 +3,49 @@
 	<App>
 		<pages>
 			<Page title="Title">
-				<content></content>
+				<content>
+					<Table items="{orderViewModel>/orders}">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text=" {i18n>Detail.Table.Title}" level="H2"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="12em">
+								<Text text="Product"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Supplier"/>
+							</Column>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+								<Text text="Dimensions"/>
+							</Column>
+							<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+								<Text text="Weight"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Price"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{ordersModel>/customer}" text="test"/>
+									<Text text="test"/>
+									<Text text="test"/>
+									<ObjectNumber number="10" state="Success"/>
+									<ObjectNumber number="10"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
 			</Page>
 		</pages>
 	</App>
 </mvc:View>
+<!--<Image
+					src="http://i.gzn.jp/img/2018/05/04/mr-bean-physical-comedy/00.jpg"
+					densityAware="false" > -->

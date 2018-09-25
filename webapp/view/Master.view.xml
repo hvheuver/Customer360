@@ -4,8 +4,14 @@
 		<pages>
 			<Page title="Title">
 				<content>
-					<List items="{customersModel>/customers}">
-						<ObjectListItem title="{customersModel>name}"/>
+					<List items="{/ZV_ZVT18_CUSTM_HVH}">
+						<ObjectListItem title="{name}" type="Navigation" press="onCustomerPress">
+							<attributes>
+								<ObjectAttribute title="{i18n>Master.List.Number}"  text="{path: 'CustomerNumber', formatter: '.formatter.addLeadingZero'}" />
+								<ObjectAttribute title="{i18n>Master.List.City}" text="{city}" />
+								<ObjectAttribute title="{i18n>Master.List.Country}" text="{country}" />
+							</attributes>
+						</ObjectListItem>
 					</List>
 				</content>
 			</Page>

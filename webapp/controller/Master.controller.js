@@ -1,18 +1,28 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"com/delaware/hvh/trac2018/controller/BaseController",
+	"com/delaware/hvh/trac2018/model/formatter"
+], function (BaseController, formatter) {
 	"use strict";
 
-	return Controller.extend("com.delaware.hvh.trac2018.controller.Master", {
-
+	return BaseController.extend("com.delaware.hvh.trac2018.controller.Master", {
+		formatter:formatter,
+		
+		onCustomerPress: function(oEvent){
+			var oCustomer = oEvent.getSource().getBindingContext().getObject();
+			this.getRouter().navTo("Detail", {
+				customerNumber: oCustomer.CustomerNumber
+			});
+			
+			this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+		},
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.delaware.hvh.trac2018.view.Master
 		 */
-		//	onInit: function() {
-		//
-		//	},
+		onInit: function() {
+			this.oRouter = this.getRouter();
+		},
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -38,20 +48,20 @@ sap.ui.define([
 		sortfield1: ""
 		sortfield2: ""
 		 */
-			onAfterRendering: function() {
-				var oModel = this.getView().getModel();
-				var self = this;
-				oModel.read("/ZV_ZVT18_CUSTM_HVH", {
-					success: function(oData){
-						self.getView().getModel("customersModel").setData({
-							"customers": oData.results	
-						});
-						console.log(oData);
-					},
-					error: function(oError){
-						console.log(oError);
-					}
-				});
+		onAfterRendering: function() {
+				// var oModel = this.getView().getModel();
+				// var self = this;
+				// oModel.read("/ZV_ZVT18_CUSTM_HVH", {
+				// 	success: function(oData){
+				// 		self.getView().getModel("customersModel").setData({
+				// 			"customers": oData.results	
+				// 		});
+				// 		console.log(oData);
+				// 	},
+				// 	error: function(oError){
+				// 		console.log(oError);
+				// 	}
+				// });
 			},
 
 		/**
